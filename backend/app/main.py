@@ -20,6 +20,11 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+from app.core.database import Base, engine
+import app.models
+
+# Create tables automatically on startup
+Base.metadata.create_all(bind=engine)
 
 app.include_router(auth.router)
 app.include_router(scholarships.router)
