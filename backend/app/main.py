@@ -21,7 +21,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 from app.core.database import Base, engine
-import app.models
+import app.models as models
 
 # Create tables automatically on startup
 Base.metadata.create_all(bind=engine)
