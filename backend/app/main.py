@@ -25,6 +25,12 @@ import app.models as models
 
 # Create tables automatically on startup
 Base.metadata.create_all(bind=engine)
+from app.init_db import seed_admin
+from app.core.database import SessionLocal
+
+db = SessionLocal()
+seed_admin(db)
+db.close()
 
 app.include_router(auth.router)
 app.include_router(scholarships.router)
