@@ -25,7 +25,9 @@ def list_scholarships(
     limit: int = Query(default=100, le=300),
     offset: int = 0,
 ):
-    query = db.query(Scholarship).options(joinedload(Scholarship.requirements)).filter(Scholarship.is_active.is_(True))
+    query = db.query(Scholarship).options(
+    joinedload(Scholarship.requirements)
+)
 
     if country:
         query = query.filter(Scholarship.country == country)
